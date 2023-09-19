@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
@@ -8,20 +8,23 @@ import { useAuth } from "@/contexts/Auth";
 import { LoginProps } from "@/interfaces/auth";
 import { required } from "@/utils/validations";
 import LogoBrand from "@/assets/logo_brand.png";
+import LoadingIcon from "../utils/loading-spin";
 
 export const LoginForm: React.FC = () => {
   const router = useRouter();
-  const { handleSignIn, authed } = useAuth();
+  const { handleSignIn, authed, loading } = useAuth();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<LoginProps>();
 
+  useEffect(() => {
+    if (authed) router.push("/home");
+  }, [authed, router]);
+
   const onSubmit = async (data: LoginProps) => {
     await handleSignIn(data);
-
-    if (authed) router.push("/home");
   };
 
   return (
@@ -68,7 +71,7 @@ export const LoginForm: React.FC = () => {
             className="mt-4 bg-orange-400 rounded-md px-6 py-2 text-white font-semibold hover:bg-orange-500 transition-all"
             type="submit"
           >
-            Login
+            {loading ? <LoadingIcon /> : "Sign In"}
           </button>
         </form>
       </div>

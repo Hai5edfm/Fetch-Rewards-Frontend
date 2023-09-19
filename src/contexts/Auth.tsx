@@ -6,7 +6,7 @@ import { OK } from "@/utils/contants/https-status";
 interface AuthContextProps {
   loading: boolean;
   authed: boolean;
-  handleSignIn: (data: any) => Promise<boolean>;
+  handleSignIn: (data: LoginProps) => Promise<void>;
 }
 
 interface Props {
@@ -18,7 +18,7 @@ const AuthContext: any = React.createContext<AuthContextProps | null>(null);
 
 const AuthProvider = (props: Props) => {
   const [authed, setAuthed] = React.useState<boolean>(false);
-  const [loading, setLoading] = React.useState<boolean>(true);
+  const [loading, setLoading] = React.useState<boolean>(false);
 
   const handleSignIn = async (data: LoginProps) => {
     try {
