@@ -1,5 +1,5 @@
 import { FC, useEffect, useState } from "react";
-import { Search } from "../filters/index";
+import { Search } from "../filters/Search";
 
 interface Props {
   data: Data[];
@@ -51,9 +51,7 @@ export const MultiSelect: FC<Props> = ({
   const handleOpenCloseBtn = () => {
     setOpen(!open);
 
-    if (!open) {
-      setSearch("");
-    }
+    if (!open) setSearch("");
   };
 
   return (
@@ -66,7 +64,7 @@ export const MultiSelect: FC<Props> = ({
         {props.label}
       </button>
       {open && (
-        <div className="absolute top-12 right-0 min-w-[240px] bg-slate-100 p-3 rounded-md max-h-[420px] overflow-auto">
+        <div className="absolute top-12 right-0 min-w-[240px] bg-slate-100 p-3 rounded-md max-h-[420px] overflow-auto z-10">
           <div className="mb-2">
             <Search handleSearch={handleSearch} />
           </div>

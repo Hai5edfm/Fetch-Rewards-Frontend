@@ -10,6 +10,9 @@ export interface Dog {
 export interface FilterSearchProps {
   page?: number;
   limit?: number;
-  breed?: string[];
-  zip_code?: string[];
+  breeds?: string[];
+  zipCodes?: string[];
+  ageMin?: number;
+  ageMax?: number;
+  sort?: string;
 }

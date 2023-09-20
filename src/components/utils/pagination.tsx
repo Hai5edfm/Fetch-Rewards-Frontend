@@ -32,6 +32,16 @@ export const Pagination: FC<Props> = ({ page, setPage, maxPages }) => {
           </button>
         </li>
         <li className="page-item">
+          {page - 2 > 0 && (
+            <button
+              className="page-link"
+              onClick={() => handlePageChange(page - 2)}
+            >
+              {page - 2}
+            </button>
+          )}
+        </li>
+        <li className="page-item">
           {page - 1 > 0 && (
             <button
               className="page-link"
@@ -56,6 +66,16 @@ export const Pagination: FC<Props> = ({ page, setPage, maxPages }) => {
               onClick={() => handlePageChange(page + 1)}
             >
               {page + 1}
+            </button>
+          )}
+        </li>
+        <li className="page-item">
+          {page + 2 <= maxPages && (
+            <button
+              className="page-link"
+              onClick={() => handlePageChange(page + 2)}
+            >
+              {page + 2}
             </button>
           )}
         </li>
