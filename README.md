@@ -21,7 +21,7 @@ cd Fetch-Rewards-Frontend
 3. Install the dependencies
 
 ```bash
-    npm install
+npm install
 ```
 
 4. Copy the .env.example variables to a .env file
@@ -32,7 +32,7 @@ cd Fetch-Rewards-Frontend
 npm run dev
 ```
 
-### Additional configs
+### Additional configs (optional)
 
 In Home page you can change the default configs for limit of results in a single page `(limit)` and max pages for the navigation `(maxPages)`, as well as the number of `(maxFavorites)` that the user must select for finding their match (api accepts max 100)
 
