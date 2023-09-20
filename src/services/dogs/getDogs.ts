@@ -33,8 +33,6 @@ export const getDogs = async ({ filters }: Props) => {
   });
   const dogsIdsData = await dogsIdsResponse.json();
 
-  console.log("🚀 ~ file: getDogs.ts:14 ~ getDogs ~ url:", url);
-
   const dogsResponse = await fetch(`${BACKEND_API}/dogs`, {
     method: "POST",
     credentials: "include",

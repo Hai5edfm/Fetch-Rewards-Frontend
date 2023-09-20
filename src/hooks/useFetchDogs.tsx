@@ -8,14 +8,9 @@ interface Props {
 }
 
 const useFetchDogs = ({ filters }: Props) => {
-  console.log(
-    "🚀 ~ file: useFetchDogs.tsx:11 ~ useFetchDogs ~ filters:",
-    filters
-  );
   const { limit, page, breeds: breedsFilter, sort, ageMax, ageMin } = filters;
   const [data, setData] = React.useState<any>([]);
   const [loading, setLoading] = React.useState<boolean>(false);
-  const [error, setError] = React.useState(null);
 
   const [breeds, setBreeds] = React.useState<string[]>([]);
 
@@ -26,19 +21,30 @@ const useFetchDogs = ({ filters }: Props) => {
   }, [limit, page, breedsFilter, sort, ageMax, ageMin]);
 
   const fetchBreeds = async () => {
-    const breeds = await getBreeds();
-    setBreeds(breeds);
+    setLoading(true);
+    try {
+      const breeds = await getBreeds();
+      setBreeds(breeds);
+    } catch (error) {
+      console.error(error);
+    }
+    setLoading(false);
   };
 
   const fetchDogs = async () => {
-    const dogs = await getDogs({ filters });
-    setData(dogs);
+    setLoading(true);
+    try {
+      const dogs = await getDogs({ filters });
+      setData(dogs);
+    } catch (error) {
+      console.error(error);
+    }
+    setLoading(false);
   };
 
   return {
     data,
     loading,
-    error,
     breeds,
   };
 };
