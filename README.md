@@ -34,6 +34,6 @@ npm run dev
 
 ### Additional configs
 
-You can change the default configs for limit of results in a single page `(limit)` and max pages for the navigation `(maxPages)`, as well as the number of `(maxFavorites)` that the user must select for finding their match (api accepts max 100)
+In Home page you can change the default configs for limit of results in a single page `(limit)` and max pages for the navigation `(maxPages)`, as well as the number of `(maxFavorites)` that the user must select for finding their match (api accepts max 100)
 
 <img src="./src/assets/configs_ss.png" />
